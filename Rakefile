@@ -3,6 +3,8 @@ require 'rubygems'
 require 'bundler'
 Bundler.require
 
+puts "Fitbit consumer key: #{ENV['FITBIT_CONSUMER_KEY']}"
+
 # Setup redis
 ENV['REDISTOGO_URL'] = 'redis://localhost:6379' unless ENV['REDISTOGO_URL']
 uri = URI.parse(ENV['REDISTOGO_URL'])
