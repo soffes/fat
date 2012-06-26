@@ -20,7 +20,7 @@ task :fetch do
   
   # Today in my timezone
   require 'active_support/time'
-  now = Time.now.in_time_zone('xPacific Time (US & Canada)')
+  now = Time.now.in_time_zone('Pacific Time (US & Canada)')
   
   # Auth
   access_token = client.reconnect(ENV['FITBIT_ACCESS_TOKEN'], ENV['FITBIT_TOKEN_SECRET'])
