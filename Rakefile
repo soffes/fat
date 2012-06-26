@@ -33,5 +33,7 @@ task :fetch do
   $redis['weight'] = client.body_measurements_on_date(now)['body']['weight']
   puts "Weight: #{$redis['weight']}"
   
+  $redis['last_updated'] = now
+  
   puts 'Done.'
 end
