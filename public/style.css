@@ -1,0 +1,94 @@
+/* Reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}body{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}q,blockquote{quotes:none}q:before,q:after,blockquote:before,blockquote:after{content:"";content:none}a img{border:none}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}section,header,footer,nav,article,aside,figure{display:block;width:100%}mark,time,meter,progress{display:inline}
+
+/* General */
+
+html {
+  -webkit-font-smoothing:antialiased;
+}
+
+body,input,textarea {
+  color: #222;
+  font-family: 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.5em;
+}
+
+a {
+  color: #0881b3;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  -moz-transition-property: color;
+  -webkit-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+}
+
+p, ul {
+  margin:0 0 1em;
+}
+
+h1 {
+  color: #000;
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 0.25em;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 0.25em;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+body > header, body > section, body > footer {
+  width:640px;
+  margin:0 auto;
+}
+
+body > header {
+  margin:5em auto 4em;
+}
+
+.light {
+  color: #999;
+}
+
+.light a {
+  color: #999;
+}
+
+.light a:hover {
+  color: #0881b3;
+}
+
+body > footer {
+  width: 640px;
+  color: #aaa;
+  text-shadow: #fff 0 1px 0;
+  font-size: 0.8em;
+  text-align: center;
+  margin: 3em auto;
+}
+
+body > footer a {
+  color: #aaa;
+}
+
+body > footer a:hover {
+  color: #0881b3;
+}
