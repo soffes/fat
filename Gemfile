@@ -5,6 +5,7 @@ gem 'sinatra', require: nil
 gem 'redis'
 gem 'dalli'
 gem 'fitgem'
+gem 'rake'
 
 group :development do
   gem 'shotgun'

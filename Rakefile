@@ -31,5 +31,3 @@ task :fetch do
   
   puts 'Done.'
 end
-
-rake :cron => :fetch

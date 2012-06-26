@@ -8,6 +8,7 @@ GEM
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
+    rake (0.9.2.2)
     redis (3.0.1)
     shotgun (0.9)
       rack (>= 1.0)
@@ -23,6 +24,7 @@ PLATFORMS
 DEPENDENCIES
   dalli
   fitgem
+  rake
   redis
   shotgun
   sinatra
