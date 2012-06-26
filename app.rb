@@ -7,6 +7,6 @@ set :cache, Dalli::Client.new
 get '/' do
   @weight = $redis['weight']
   @water = $redis['water']
-  @last_updated = Time.parse($redis['last_updated']).strftime('%D %I:%M%p').downcase
+  @last_updated = $redis['last_updated']
   erb :index
 end

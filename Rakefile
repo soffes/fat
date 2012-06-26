@@ -20,7 +20,7 @@ task :fetch do
   
   # Today in my timezone
   require 'active_support/time'
-  now = Time.now.in_time_zone("Pacific Time (US & Canada)")
+  now = Time.now.in_time_zone('xPacific Time (US & Canada)')
   
   # Auth
   access_token = client.reconnect(ENV['FITBIT_ACCESS_TOKEN'], ENV['FITBIT_TOKEN_SECRET'])
@@ -33,7 +33,7 @@ task :fetch do
   $redis['weight'] = client.body_measurements_on_date(now)['body']['weight']
   puts "Weight: #{$redis['weight']}"
   
-  $redis['last_updated'] = now
+  $redis['last_updated'] = now.strftime('%D %I:%M%p').downcase
   
-  puts 'Done.'
+  puts "Done. Last updated at #{$redis['last_updated']}"
 end
