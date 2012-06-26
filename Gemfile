@@ -7,6 +7,8 @@ gem 'redis'
 gem 'dalli'
 gem 'fitgem'
 gem 'rake'
+gem 'activesupport', require: nil
+gem 'tzinfo', require: nil
 
 group :development do
   gem 'shotgun'

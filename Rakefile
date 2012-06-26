@@ -3,8 +3,6 @@ require 'rubygems'
 require 'bundler'
 Bundler.require
 
-puts "Redis: #{ENV['REDISTOGO_URL']}"
-
 # Setup redis
 ENV['REDISTOGO_URL'] = 'redis://localhost:6379' unless ENV['REDISTOGO_URL']
 uri = URI.parse(ENV['REDISTOGO_URL'])
@@ -20,15 +18,19 @@ task :fetch do
     secret: ENV['FITBIT_TOKEN_SECRET']
   })
   
+  # Today in my timezone
+  require 'active_support/time'
+  now = Time.now.in_time_zone("Pacific Time (US & Canada)")
+  
   # Auth
   access_token = client.reconnect(ENV['FITBIT_ACCESS_TOKEN'], ENV['FITBIT_TOKEN_SECRET'])
   
   # Water
-  $redis['water'] = client.water_on_date(DateTime.now)['summary']['water']
+  $redis['water'] = client.water_on_date(now)['summary']['water']
   puts "Water: #{$redis['water']}"
   
   # Weight
-  $redis['weight'] = client.body_measurements_on_date(DateTime.now)['body']['weight']
+  $redis['weight'] = client.body_measurements_on_date(now)['body']['weight']
   puts "Weight: #{$redis['weight']}"
   
   puts 'Done.'
