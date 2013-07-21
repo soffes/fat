@@ -1,8 +1,9 @@
 <p>I'm fat, well fatter than I'd like. <em>I'm tracking lots of stuff to keep me motivated and see my progress.</em></p>
 
 <ul class="list">
-  <li>Current weight: <%= @weight %>lbs</li>
-  <li>Water consumed today: <%= @water %>oz</li>
+  <li>Current weight: <%= '%0.2f' % @weight %>lbs</li>
+  <li>Water consumed today: <%= '%0.2f' % @water %>oz</li>
+  <li>Steps today: <%= '%0.f' % @steps %></li>
 </ul>
 
 <p class="light">Last updated at <%= @last_updated %>. At some point this will have pretty graphs.</p>

@@ -17,23 +17,24 @@ task :fetch do
     token: ENV['FITBIT_ACCESS_TOKEN'],
     secret: ENV['FITBIT_TOKEN_SECRET']
   })
-  
-  # Today in my timezone
-  require 'active_support/time'
-  now = Time.now.in_time_zone('Pacific Time (US & Canada)')
-  
-  # Auth
   access_token = client.reconnect(ENV['FITBIT_ACCESS_TOKEN'], ENV['FITBIT_TOKEN_SECRET'])
-  
+
+  end_day = Date.today
+  start_day = end_day - 14
+
   # Water
-  $redis['water'] = client.water_on_date(now)['summary']['water']
-  puts "Water: #{$redis['water']}"
-  
+  $redis['water'] = JSON.dump(client.data_by_time_range('/foods/log/water', base_date: start_day.to_s, end_date: end_day.to_s)['foods-log-water'])
+
   # Weight
-  $redis['weight'] = client.body_measurements_on_date(now)['body']['weight']
-  puts "Weight: #{$redis['weight']}"
-  
+  $redis['weight'] = JSON.dump(client.data_by_time_range('/body/weight', base_date: start_day.to_s, end_date: end_day.to_s)['body-weight'])
+
+  # Steps
+  $redis['steps'] = JSON.dump(client.data_by_time_range('/activities/log/steps', base_date: start_day.to_s, end_date: end_day.to_s)['activities-log-steps'])
+
+  # Last updated
+  now = Time.now.utc
+  now -= 4 * 60 * 60
   $redis['last_updated'] = now.strftime('%D %I:%M%p').downcase
-  
+
   puts "Done. Last updated at #{$redis['last_updated']}"
 end
