@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>Sam's Fat</title>
-    <link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/style.css" media="screen" rel="stylesheet" type="text/css">
   </head>
   <body>
     <header>
@@ -13,10 +13,7 @@
       <%= yield %>
     </section>
     <footer>
-      <p>Copyright &copy; 2012 <a href="http://samsoff.es/" rel="external nofollow">Sam Soffes</a>. <a href="https://github.com/samsoffes/fat.samsoff.es" rel="external nofollow">View source on GitHub</a>.</p>
+      <p>Copyright &copy; <%= Time.now.year %> <a href="http://soff.es/" rel="external nofollow">Sam Soffes</a>. <a href="https://github.com/soffes/fat" rel="external nofollow">View source on GitHub</a>.</p>
     </footer>
-    <% if ENV['RACK_ENV'] == 'production' %>
-    <script type="text/javascript">var _gauges=_gauges||[];(function(){var t=document.createElement('script');t.async=true;t.id='gauges-tracker';t.setAttribute('data-site-id','4fe8fb9c613f5d5eb000001e');t.src='//secure.gaug.es/track.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(t, s);})();</script>
-    <% end %>
   </body>
 </html>
