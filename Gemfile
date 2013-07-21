@@ -1,12 +1,14 @@
-source :rubygems
-ruby '1.9.3'
+source 'https://rubygems.org'
 
-gem 'sinatra', require: nil
+ruby '2.0.0'
+
+gem 'sinatra'
 gem 'thin'
+
 gem 'redis'
-gem 'dalli'
 gem 'fitgem'
 gem 'rake'
+
 gem 'activesupport', require: nil
 gem 'tzinfo', require: nil
 
