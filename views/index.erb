@@ -1,9 +1,11 @@
-<p>I'm fat, well fatter than I'd like. <em>I'm tracking lots of stuff to keep me motivated and see my progress.</em></p>
+<p>I'm fat, well fatter than I'd like. <em>I'm tracking lots of stuff to keep me motivated and see my progress.</em> <span class="light">Last updated at <%= @last_updated %>.</span></p>
 
-<ul class="list">
-  <li>Current weight: <%= '%0.2f' % @weight %>lbs</li>
+<!-- <ul class="list">
+  <li>Current weight: <%= '%0.2f' % @last_weight %>lbs</li>
   <li>Water consumed today: <%= '%0.2f' % @water %>oz</li>
   <li>Steps today: <%= '%0.f' % @steps %></li>
-</ul>
+</ul> -->
 
-<p class="light">Last updated at <%= @last_updated %>. At some point this will have pretty graphs.</p>
+<canvas></canvas>
+
+<script>var fat={'weight':<%= @weight %>};</script>

@@ -3,6 +3,8 @@ require 'rubygems'
 require 'bundler'
 Bundler.require
 
+require 'date'
+
 # Setup redis
 ENV['REDISTOGO_URL'] = 'redis://localhost:6379' unless ENV['REDISTOGO_URL']
 uri = URI.parse(ENV['REDISTOGO_URL'])
@@ -22,11 +24,24 @@ task :fetch do
   end_day = Date.today
   start_day = end_day - 14
 
+  # Weight
+  weight = client.data_by_time_range('/body/weight', base_date: start_day.to_s, end_date: end_day.to_s)['body-weight']
+  $redis['last_weight'] = weight.last['value']
+  $redis['weight'] = JSON.dump({
+    labels: (start_day..end_day).collect { |i| i.strftime('%m-%d') },
+    datasets: [
+      {
+        data: weight.collect { |i| i['value'].to_f },
+        fillColor: 'rgba(82,179,229,0.3)',
+        strokeColor: 'rgba(82,179,229,1)',
+        pointColor: 'rgba(82,179,229,1)',
+        pointStrokeColor: '#fff',
+      }
+    ]
+  })
+
   # Water
   $redis['water'] = JSON.dump(client.data_by_time_range('/foods/log/water', base_date: start_day.to_s, end_date: end_day.to_s)['foods-log-water'])
-
-  # Weight
-  $redis['weight'] = JSON.dump(client.data_by_time_range('/body/weight', base_date: start_day.to_s, end_date: end_day.to_s)['body-weight'])
 
   # Steps
   $redis['steps'] = JSON.dump(client.data_by_time_range('/activities/log/steps', base_date: start_day.to_s, end_date: end_day.to_s)['activities-log-steps'])
