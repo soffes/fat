@@ -4,6 +4,7 @@ ruby '2.0.0'
 
 gem 'sinatra'
 gem 'thin'
+gem 'rack-canonical-host'
 
 gem 'redis'
 gem 'fitgem'
