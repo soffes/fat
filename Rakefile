@@ -53,3 +53,5 @@ task :fetch do
 
   puts "Done. Last updated at #{$redis['last_updated']}"
 end
+
+task default: :fetch

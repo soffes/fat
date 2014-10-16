@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.2'
 
 gem 'sinatra'
-gem 'thin'
+gem 'puma'
 gem 'rack-canonical-host'
 
 gem 'redis'
