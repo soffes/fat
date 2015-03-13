@@ -12,6 +12,10 @@ $redis = Redis.new(host: uri.host, port: uri.port, password: uri.password)
 
 desc 'Get stats from Fitbit'
 task :fetch do
+  %w{FITBIT_CONSUMER_KEY FITBIT_CONSUMER_SECRET FITBIT_ACCESS_TOKEN FITBIT_TOKEN_SECRET}.each do |key|
+    raise "Missing environment variable `#{key}`." unless ENV[key]
+  end
+
   # Setup the client
   client = Fitgem::Client.new({
     consumer_key: ENV['FITBIT_CONSUMER_KEY'],
